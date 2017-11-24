@@ -309,20 +309,26 @@ namespace {
 
 - (void)updateAnimationParams
 {
-    if (iteration % 2 == 0) {
+    float angleStep = 10.f;
+    float zStep = 2.f;
+    float zMax = 20.f;
+    float zMin = 0.f;
+    int iterationMod = 2;
+    
+    if (iteration % iterationMod == 0) {
         
-        currentAngle += 10;
+        currentAngle += angleStep;
         if (shouldAscend) {
-            currentY += 2;
+            currentZ += zStep;
         } else {
-            currentY -= 2;
+            currentZ -= zStep;
         }
         
-        if (currentY == 0) {
+        if (currentZ == zMin) {
             shouldAscend = true;
         }
         
-        if (currentY == 20) {
+        if (currentZ == zMax) {
             shouldAscend = false;
         }
         

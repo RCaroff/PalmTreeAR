@@ -52,7 +52,7 @@ static const int kNumAugmentationTextures = 2;
     int iteration;
     float currentAngle;
     bool shouldAscend;
-    float currentY;
+    float currentZ;
 }
 
 @property (nonatomic, weak) SampleApplicationSession * vapp;
