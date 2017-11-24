@@ -56,7 +56,7 @@ namespace {
     };
     
     // Model scale factor
-    const float kCoconutScale = 80.0f;
+    const float kCoconutScale = 100.0f;
     const float kTeapotScale = 3.0f;
 }
 
@@ -92,6 +92,10 @@ namespace {
     self = [super initWithFrame:frame];
     
     if (self) {
+        iteration = 0;
+        currentAngle = 0.0f;
+        shouldAscend = true;
+        
         vapp = app;
         // Enable retina mode if available on this device
         if (YES == [vapp isRetinaDisplay]) {
@@ -226,6 +230,8 @@ namespace {
     refFreeFrame->render();
     
     for (int i = 0; i < state.getNumTrackableResults(); ++i) {
+        
+        
         // Get the trackable
         const Vuforia::TrackableResult* result = state.getTrackableResult(i);
         const Vuforia::Trackable& trackable = result->getTrackable();
@@ -247,7 +253,8 @@ namespace {
             texCoords = (GLvoid*)CoconutOBJTexCoords;
             
             float angle = 90.0f; // YOUR ROTATION ANGLE HERE (in degrees)
-            SampleApplicationUtils::translatePoseMatrix(0.0f, 0.0f, scale, &modelViewMatrix.data[0]);
+            SampleApplicationUtils::translatePoseMatrix(0.0f, 0.0f, scale+currentY, &modelViewMatrix.data[0]);
+            SampleApplicationUtils::rotatePoseMatrix(currentAngle, 0.0f, 0.0f, 1.0f, &modelViewMatrix.data[0]);
             SampleApplicationUtils::rotatePoseMatrix(angle, 1.0f, 0.0f, 0.0f, &modelViewMatrix.data[0]);
             SampleApplicationUtils::scalePoseMatrix(scale, scale, scale, &modelViewMatrix.data[0]);
             SampleApplicationUtils::multiplyMatrix(&projectionMatrix.data[0], &modelViewMatrix.data[0], &modelViewProjection.data[0]);
@@ -261,7 +268,7 @@ namespace {
             SampleApplicationUtils::scalePoseMatrix(scale, scale, scale, &modelViewMatrix.data[0]);
             SampleApplicationUtils::multiplyMatrix(&projectionMatrix.data[0], &modelViewMatrix.data[0], &modelViewProjection.data[0]);
         }
-        
+    
         
         
         glUseProgram(shaderProgramID);
@@ -291,11 +298,42 @@ namespace {
         SampleApplicationUtils::checkGlError("EAGLView renderFrameVuforia");
     }
     
+    [self updateAnimationParams];
+    
     glDisable(GL_DEPTH_TEST);
     glDisable(GL_CULL_FACE);
     
     [self presentFramebuffer];
 
+}
+
+- (void)updateAnimationParams
+{
+    if (iteration % 2 == 0) {
+        
+        currentAngle += 10;
+        if (shouldAscend) {
+            currentY += 2;
+        } else {
+            currentY -= 2;
+        }
+        
+        if (currentY == 0) {
+            shouldAscend = true;
+        }
+        
+        if (currentY == 20) {
+            shouldAscend = false;
+        }
+        
+        iteration = 0;
+        
+        if (currentAngle == 360) {
+            currentAngle = 0;
+        }
+    }
+    
+    iteration++;
 }
 
 - (void)configureVideoBackgroundWithViewWidth:(float)viewWidth andHeight:(float)viewHeight

@@ -814,7 +814,7 @@
 				TargetAttributes = {
 					D21B07E51A1B4AA20041ECF3 = {
 						CreatedOnToolsVersion = 6.1;
-						DevelopmentTeam = K77358RK54;
+						DevelopmentTeam = 3SQH3CYY9E;
 					};
 				};
 			};
@@ -1070,7 +1070,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				DEVELOPMENT_TEAM = K77358RK54;
+				DEVELOPMENT_TEAM = 3SQH3CYY9E;
 				ENABLE_BITCODE = NO;
 				HEADER_SEARCH_PATHS = ../../build/include;
 				INFOPLIST_FILE = "VuforiaSamples/VuforiaSamples-Info.plist";
@@ -1092,7 +1092,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 21;
-				DEVELOPMENT_TEAM = K77358RK54;
+				DEVELOPMENT_TEAM = 3SQH3CYY9E;
 				ENABLE_BITCODE = NO;
 				HEADER_SEARCH_PATHS = ../../build/include;
 				INFOPLIST_FILE = "VuforiaSamples/VuforiaSamples-Info.plist";

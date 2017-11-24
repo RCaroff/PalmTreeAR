@@ -48,6 +48,11 @@ static const int kNumAugmentationTextures = 2;
     BOOL offTargetTrackingEnabled;
     
     SampleAppRenderer *sampleAppRenderer;
+    
+    int iteration;
+    float currentAngle;
+    bool shouldAscend;
+    float currentY;
 }
 
 @property (nonatomic, weak) SampleApplicationSession * vapp;
