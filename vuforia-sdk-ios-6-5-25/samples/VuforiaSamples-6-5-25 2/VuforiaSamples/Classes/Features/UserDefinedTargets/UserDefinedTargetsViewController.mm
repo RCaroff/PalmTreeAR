@@ -329,6 +329,7 @@ countries.
         NSLog(@"Failed to initialize ObjectTracker.");
         return false;
     }
+    Vuforia::setHint(Vuforia::HINT_MAX_SIMULTANEOUS_IMAGE_TARGETS, 10);
     return true;
 }
 
