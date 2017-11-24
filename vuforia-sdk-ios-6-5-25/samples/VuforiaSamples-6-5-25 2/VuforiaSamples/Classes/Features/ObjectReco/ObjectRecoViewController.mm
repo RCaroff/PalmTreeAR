@@ -238,7 +238,7 @@ countries.
 }
 
 - (bool) doLoadTrackersData {
-    currentDataSet = [self loadObjectTrackerDataSet:@"ObjectReco.xml"];
+    currentDataSet = [self loadObjectTrackerDataSet:@"contrib_flakes.xml"];
     if (currentDataSet == NULL) {
         NSLog(@"Failed to load datasets");
         return NO;

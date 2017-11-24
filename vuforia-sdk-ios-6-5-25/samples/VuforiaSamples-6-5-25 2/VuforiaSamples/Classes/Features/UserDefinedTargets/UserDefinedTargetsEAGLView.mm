@@ -253,7 +253,7 @@ namespace {
             texCoords = (GLvoid*)CoconutOBJTexCoords;
             
             float angle = 90.0f; // YOUR ROTATION ANGLE HERE (in degrees)
-            SampleApplicationUtils::translatePoseMatrix(0.0f, 0.0f, scale+currentY, &modelViewMatrix.data[0]);
+            SampleApplicationUtils::translatePoseMatrix(0.0f, 0.0f, scale+currentZ, &modelViewMatrix.data[0]);
             SampleApplicationUtils::rotatePoseMatrix(currentAngle, 0.0f, 0.0f, 1.0f, &modelViewMatrix.data[0]);
             SampleApplicationUtils::rotatePoseMatrix(angle, 1.0f, 0.0f, 0.0f, &modelViewMatrix.data[0]);
             SampleApplicationUtils::scalePoseMatrix(scale, scale, scale, &modelViewMatrix.data[0]);

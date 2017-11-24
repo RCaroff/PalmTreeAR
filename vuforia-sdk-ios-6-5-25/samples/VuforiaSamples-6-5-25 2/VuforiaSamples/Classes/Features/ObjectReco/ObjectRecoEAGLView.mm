@@ -52,7 +52,7 @@ namespace {
 
     // Teapot texture filenames
     const char* textureFilenames[] = {
-        "CubeWireframe.png"
+        "TextureTeapotRed.png"
     };
     
 }
